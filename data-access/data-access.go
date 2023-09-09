@@ -9,15 +9,6 @@ import (
 	_ "github.com/lib/pq"
 )
 
-type Book struct {
-	Id          string
-	Title       string
-	Pages       int64
-	Writer      string
-	Genre       string
-	Description string
-}
-
 func main() {
 	var connStr string = "postgres://maulanazn:t00r123@localhost/books?sslmode=disable"
 	db, err := sql.Open("postgres", connStr)

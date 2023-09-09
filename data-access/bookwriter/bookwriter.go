@@ -3,22 +3,23 @@ package bookwriter
 import (
 	"database/sql"
 	"fmt"
+	"golangkah/model"
 	"log"
 
 	_ "github.com/lib/pq"
 )
 
-type Book struct {
-	Id          string
-	Title       string
-	Pages       int64
-	Writer      string
-	Genre       string
-	Description string
-}
+// type Book struct {
+// 	Id          string
+// 	Title       string
+// 	Pages       int64
+// 	Writer      string
+// 	Genre       string
+// 	Description string
+// }
 
-func BookByWriter(writer string) ([]Book, error) {
-	var book []Book
+func BookByWriter(writer string) ([]model.Book, error) {
+	var book []model.Book
 
 	var connStr string = "postgres://maulanazn:t00r123@localhost/books?sslmode=disable"
 	db, err := sql.Open("postgres", connStr)
@@ -36,7 +37,7 @@ func BookByWriter(writer string) ([]Book, error) {
 	defer rows.Close()
 
 	for rows.Next() {
-		var bk Book
+		var bk model.Book
 		if err := rows.Scan(&bk.Id, &bk.Title, &bk.Pages, &bk.Writer, &bk.Genre, &bk.Description); err != nil {
 			return nil, fmt.Errorf("bookyByWriter %q: %v", writer, err)
 		}

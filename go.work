@@ -2,6 +2,7 @@ go 1.20
 
 use (
 	./data-access
-	./greetings
-	./hello
+	./data-access/model
+	./mapping/function
+	./mathoperation
 )
