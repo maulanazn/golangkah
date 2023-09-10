@@ -3,6 +3,7 @@ go 1.20
 use (
 	./data-access
 	./data-access/model
-	./mapping/function
+	./mapping
+	./mapping/memorysimulation
 	./mathoperation
 )

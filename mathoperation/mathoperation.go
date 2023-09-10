@@ -6,20 +6,22 @@ import (
 	"time"
 )
 
-var AvgNum = func(num ...int) int {
+type filterCallback func(string) bool
+
+var AvgNum = func(num *[]int) int {
 	var total int = 0
 	var result int = 0
-	for _, value := range num {
+	for _, value := range *num {
 		total += value
-		result = total / len(num)
+		result = total / len(*num)
 	}
 
 	return result
 }
 
-var FindMin = func(num ...int) int {
+var FindMin = func(num *[]int) int {
 	var result int = 0
-	for _, value := range num {
+	for _, value := range *num {
 		if result < value {
 			return value
 		}
@@ -28,10 +30,10 @@ var FindMin = func(num ...int) int {
 	return result
 }
 
-var FindMax = func(numbers []int, max int) (int, func() []int) {
+var FindMax = func(numbers *[]int, max int) (int, func() []int) {
 	var res []int
 
-	for _, e := range numbers {
+	for _, e := range *numbers {
 		if e <= max {
 			res = append(res, e)
 		}
@@ -50,4 +52,15 @@ var GenerateRandomNumber = func(min, max int) (int, error) {
 	}
 
 	return value, nil
+}
+
+var Filter = func(data *[]string, callback filterCallback) []string {
+	var result []string
+	for _, each := range *data {
+		if filtered := callback(each); filtered {
+			result = append(result, each)
+		}
+	}
+
+	return result
 }

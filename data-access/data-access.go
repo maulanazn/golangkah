@@ -3,6 +3,7 @@ package main
 import (
 	"database/sql"
 	"fmt"
+	"golangkah/data-access/bookbyid"
 	"golangkah/data-access/bookwriter"
 	"log"
 
@@ -30,4 +31,11 @@ func main() {
 		log.Fatal(err)
 	}
 	fmt.Printf("Book found: %v\n", albums)
+
+	album, err := bookbyid.BookById("6fa1d6e6-52c6-4a79-9aff-1b03ceb73f55")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("Book found: %v\n", album)
 }

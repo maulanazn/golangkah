@@ -9,15 +9,6 @@ import (
 	_ "github.com/lib/pq"
 )
 
-// type Book struct {
-// 	Id          string
-// 	Title       string
-// 	Pages       int64
-// 	Writer      string
-// 	Genre       string
-// 	Description string
-// }
-
 func BookByWriter(writer string) ([]model.Book, error) {
 	var book []model.Book
 
