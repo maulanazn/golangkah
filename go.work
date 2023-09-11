@@ -6,4 +6,5 @@ use (
 	./mapping
 	./mapping/memorysimulation
 	./mathoperation
+	./errorhandling
 )

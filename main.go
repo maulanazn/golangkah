@@ -1,7 +1,7 @@
 package main
 
-import "fmt"
+import "golangkah/errorhandling"
 
 func main() {
-	fmt.Println("hello world")
+	errorhandling.TrySqrt()
 }
