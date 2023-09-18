@@ -1,6 +1,7 @@
 package mathoperation
 
 import (
+	"fmt"
 	"log"
 	"math/rand"
 	"time"
@@ -8,29 +9,27 @@ import (
 
 type filterCallback func(string) bool
 
-var AvgNum = func(num *[]int) int {
-	var total int = 0
-	var result int = 0
-	for _, value := range *num {
-		total += value
-		result = total / len(*num)
+func DataKUA[K comparable, V int64](num map[K]V) V {
+	var total V
+	for index, result := range num {
+		fmt.Printf("Name %v, age %v\n", index, result)
 	}
 
-	return result
+	return total
 }
 
-var FindMin = func(num *[]int) int {
-	var result int = 0
-	for _, value := range *num {
+func FindMin[K comparable, V int](num map[K]V) V {
+	var result V
+	for _, value := range num {
 		if result < value {
-			return value
+			result += value
 		}
 	}
 
 	return result
 }
 
-var FindMax = func(numbers *[]int, max int) (int, func() []int) {
+var FindMax = func(numbers *[]int, max int) (int, []int) {
 	var res []int
 
 	for _, e := range *numbers {
@@ -39,9 +38,7 @@ var FindMax = func(numbers *[]int, max int) (int, func() []int) {
 		}
 	}
 
-	return len(res), func() []int {
-		return res
-	}
+	return len(res), res
 }
 
 var GenerateRandomNumber = func(min, max int) (int, error) {

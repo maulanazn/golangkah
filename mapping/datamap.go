@@ -7,5 +7,5 @@ import (
 
 func Datamap() {
 	var arrNum []int = []int{1, 2, 3, 4, 5, 6, 7, 8}
-	fmt.Println(mathoperation.AvgNum(&arrNum))
+	fmt.Println(mathoperation.DataKUA(&arrNum))
 }
