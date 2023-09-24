@@ -16,7 +16,7 @@ func (err *sqrtNegativeErr) Error() string {
 	if err.value < 0 {
 		return fmt.Sprintf("cannot use negative number: %f", err.value)
 	}
-
+    
 	return fmt.Sprint(err.value)
 }
 
@@ -44,4 +44,21 @@ func TrySqrt() {
 	}
 
 	fmt.Println(sqrtNegative)
+}
+
+func Hello(name string) {
+    message := recover();
+    
+    if message != nil {
+        fmt.Println("error because: ", message);
+    }
+    fmt.Println(name)
+}
+
+func ErrorDefer(err bool) {
+    defer Hello("maulana")
+
+    if err {
+        panic("Error")
+    }
 }
