@@ -11,5 +11,11 @@
             "username": "maulanazn"
         }
     ],
-    "discord.enabled": true
+    "discord.enabled": true,
+    "vim.handleKeys": {
+        "<C-d>": true,
+        "<C-s>": false,
+        "<C-z>": false,
+        "<C-f>": false
+    }
 }
