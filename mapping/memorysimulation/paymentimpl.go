@@ -1,5 +1,7 @@
 package memorysimulation
 
+import "fmt"
+
 type Payment struct {
 	Id        string
 	card_no   string
@@ -7,22 +9,19 @@ type Payment struct {
 	user_id   string
 }
 
-func (payment *Payment) GetId() string {
-	return payment.Id
-}
-
-func (payment *Payment) GetUserId() string {
-	return payment.user_id
-}
-
-func (payment *Payment) GetCardNumber() string {
+func (payment Payment) GetCardNumber() string {
 	return payment.card_no
 }
 
-func (payment *Payment) GetCardType() string {
+func (payment Payment) GetCardType() string {
 	return payment.card_type
 }
 
-func (payment *Payment) GetAllInfo() Payment {
-	return *payment
+func (payment Payment) GetInfo() int {
+	result, err := fmt.Printf("Card number: %s \n Type: %s", payment.card_no, payment.card_type)
+	if err != nil {
+		fmt.Printf("%v", err)
+	}
+
+	return result
 }
