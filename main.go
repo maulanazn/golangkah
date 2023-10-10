@@ -1,9 +1,7 @@
 package main
 
-import (
-	memorysimulation "golangkah/memorysim"
-)
+import "fmt"
 
 func main() {
-	memorysimulation.GetPayment()
+	fmt.Println("Hello World")
 }

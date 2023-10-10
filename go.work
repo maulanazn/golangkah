@@ -4,10 +4,7 @@ use (
 	./bestalbum/entity
 	./bestalbum/contract
 	./bestalbum/service
-	./data-access
-	./data-access/model
-	./errorhandling
-	./helper
+	./routine
 	./mapping
 	./mapping/memorysimulation
 	./mathoperation
