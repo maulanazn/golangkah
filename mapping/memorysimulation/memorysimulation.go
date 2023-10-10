@@ -1,12 +1,21 @@
 package memorysimulation
 
+import (
+	"fmt"
+)
+
 func GetPayment() {
-	var userPayment Payment = Payment{
-		Id:        "1023ddss-dfdd-dfdf",
-		card_no:   "01002-2322-sdfs",
-		user_id:   "lkasldjflkasjf",
-		card_type: "mastercard global",
+	userPayment := []Payment{
+		{
+			{
+				"asdf",
+				"a1022033",
+				"mastercard global",
+				"821832",
+			},
+		},
 	}
 
-	ShowInfo(userPayment)
+	fmt.Println("Hello world")
+	ShowCardById(userPayment, "lkjlasdf")
 }

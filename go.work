@@ -1,11 +1,14 @@
-go 1.20
+go 1.21.2
 
 use (
+	./bestalbum/entity
+	./bestalbum/contract
+	./bestalbum/service
 	./data-access
 	./data-access/model
+	./errorhandling
+	./helper
 	./mapping
 	./mapping/memorysimulation
 	./mathoperation
-	./errorhandling
-	./helper
 )

@@ -1,8 +1,10 @@
 package memorysimulation
 
-import "fmt"
+import (
+	"fmt"
+)
 
-type Payment struct {
+type Payment []struct {
 	Id        string
 	card_no   string
 	card_type string
@@ -10,18 +12,34 @@ type Payment struct {
 }
 
 func (payment Payment) GetCardNumber() string {
-	return payment.card_no
+	for _, up := range payment {
+		return up.card_no
+	}
+
+	return ""
 }
 
 func (payment Payment) GetCardType() string {
-	return payment.card_type
+	for _, up := range payment {
+		return up.card_type
+	}
+
+	return ""
 }
 
 func (payment Payment) GetInfo() int {
-	result, err := fmt.Printf("Card number: %s \n Type: %s", payment.card_no, payment.card_type)
-	if err != nil {
-		fmt.Printf("%v", err)
+	for _, up := range payment {
+		result, err := fmt.Printf("Card number: %s \n Type: %s", up.card_no, up.card_type)
+		if err != nil {
+			fmt.Printf("%v", err)
+		} else {
+			return result
+		}
 	}
 
-	return result
+	return 0
+}
+
+func (payment Payment) GetCardById(id string) string {
+	return id
 }
