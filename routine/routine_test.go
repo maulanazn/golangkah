@@ -4,10 +4,16 @@ import (
 	"fmt"
 	"testing"
 	"time"
+  "strconv"
 )
 
 func RunHelloWorld(i int) {
 	fmt.Println("Hello world number : ", i)
+}
+
+func RunWorld(data chan string) {
+  time.Sleep(1 * time.Second)
+  fmt.Println(data)
 }
 
 func TestRunRoutine(t *testing.T) {
@@ -26,15 +32,46 @@ func BenchmarkPerformHelloWorld(b *testing.B) {
   time.Sleep(2 * time.Second)
 }
 
-func TestDoSomething(t *testing.T) {
-  channel := make(chan string)
+func TestRangeChannel(t *testing.T) {
+  channel := make(chan string, 3)
+
+  go func() {
+    for i := 0; i < 10; i++ {
+      channel <- "Sending data number " + strconv.Itoa(i)
+    }
+    close(channel)
+  }()
+  
+  for data := range channel {
+    fmt.Println("Menerima data ", data)
+  }
+}
+
+func TestSelectChannel(t *testing.T) {
+  channel := make(chan string, 3)
+  channel1 := make(chan string, 3)
+  
   defer close(channel)
+  defer close(channel1)
 
-  go func(c chan string) {
-    c <- "maulana"
-  }(channel)
+  go RunWorld(channel)
+  go RunWorld(channel1)
 
-  data := <- channel
+  counter := 0
+  for {
+    select {
+      case data := <- channel:
+        fmt.Println("Data channel 1", data)
+        counter++
+      case data := <- channel1:
+        fmt.Println("Data channel 2", data)
+        counter++
+      default:
+        fmt.Println("Waiting for data")
+    }
 
-  fmt.Println(data)
+    if counter == 2 {
+      break
+    }
+  }
 }
