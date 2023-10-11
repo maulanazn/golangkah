@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"sync"
 	"testing"
+	"time"
 )
 
 type WalletAccount struct {
@@ -25,21 +26,18 @@ func (wallet *WalletAccount) GetBalance() int {
 }
 
 func TestRwMutex(t *testing.T) {
-	var wait sync.WaitGroup
 	wallet := WalletAccount{}
 
-	for i := 0; i < 10; i++ {
-		wait.Add(1)
+	for i := 0; i < 100; i++ {
 		go func() {
-			defer wait.Done()
-			for j := 0; j < 10; j++ {
+			for j := 0; j < 100; j++ {
 				wallet.AddBalance(1)
 				fmt.Println(wallet.GetBalance())
 			}
 		}()
 	}
 
-	wait.Wait()
+	time.Sleep(1 * time.Second)
 	fmt.Println("Total balance : ", wallet.GetBalance())
 }
 
@@ -53,27 +51,24 @@ func GetName(name_channel <-chan interface{}) {
 }
 
 func TestCallName(t *testing.T) {
-	var wait sync.WaitGroup
 	channel := make(chan interface{})
 	defer close(channel)
 
 	var x int = 0
 	var mutex sync.Mutex
 	for i := 0; i < 1000; i++ {
-		wait.Add(1)
 		go func() {
-			defer wait.Done()
 			for j := 0; j < 100; j++ {
 				mutex.Lock()
-				x += 1
-				go SetName(channel, x)
-				go GetName(channel)
+				// go SetName(channel, x)
+				// go GetName(channel)
+				x = x + 1
 				mutex.Unlock()
 			}
 		}()
 	}
 
-	wait.Wait()
+	time.Sleep(1 * time.Second)
 	fmt.Println("Counter: ", x)
 }
 
@@ -109,26 +104,24 @@ func Transfer(user1 *GopayAccount, user2 *GopayAccount, amount int) {
 	user2.Unlock()
 }
 
-func TestTransfer(t *testing.T) {
+func TestTransferFailed(t *testing.T) {
 	user := GopayAccount{Name: "maulana", Balance: 10000}
 	user1 := GopayAccount{Name: "fatih", Balance: 10000}
 
 	user.WaitGroup.Add(1)
 	user1.WaitGroup.Add(1)
-	go Transfer(&user, &user1, 100)
+
+	go Transfer(&user, &user1, 1000)
+	go Transfer(&user1, &user, 1000)
+
+	user1.WaitGroup.Wait()
 	user.WaitGroup.Wait()
 
-	fmt.Println("User : ", user.Name, "Balance", user.Balance)
-	fmt.Println("User : ", user.Name, "Balance", user1.Balance)
-
+	fmt.Println("User : ", user.Name, ", balance : ", user.Balance)
+	fmt.Println("User : ", user1.Name, ", balance : ", user1.Balance)
 }
 
 func RunAsynchronously(group *sync.WaitGroup) {
-	/**
-	Done() must be on go routine function
-	Add(int) must be outside of go routine function
-	Wait() must be outside of go routine function and place it in the bottom after the function is executed
-	*/
 	defer group.Done()
 
 	group.Add(1)
