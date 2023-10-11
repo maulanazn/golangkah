@@ -1,28 +1,28 @@
 package routine
 
 import (
-  "fmt"
-  "time"
-  "testing"
+	"fmt"
+	"testing"
+	"time"
 )
 
 func SendData(channel chan<- string) {
-  channel <- "maulana"
+	channel <- "maulana"
 }
 
-func  ReceiveData(channel <-chan string) {
-  data := <- channel
+func ReceiveData(channel <-chan string) {
+	data := <-channel
 
-  fmt.Println(data)
+	fmt.Println(data)
 }
 
 func TestInOut(t *testing.T) {
-  channel := make(chan string)
+	channel := make(chan string)
 
-  defer close(channel)
+	defer close(channel)
 
-  go SendData(channel)
-  go ReceiveData(channel)
-  
-  time.Sleep(1 * time.Second)
+	go SendData(channel)
+	go ReceiveData(channel)
+
+	time.Sleep(1 * time.Second)
 }
