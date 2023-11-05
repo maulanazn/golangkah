@@ -5,17 +5,11 @@
             "server": "localhost",
             "port": 5432,
             "driver": "PostgreSQL",
-            "name": "book_payment",
-            "group": "book",
-            "database": "books",
+            "name": "paybook_local",
+            "group": "paybook",
+            "database": "paybook",
             "username": "maulanazn"
         }
     ],
-    "discord.enabled": true,
-    "vim.handleKeys": {
-        "<C-d>": true,
-        "<C-s>": false,
-        "<C-z>": false,
-        "<C-f>": false
-    }
+    "discord.enabled": false,
 }

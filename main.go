@@ -1,7 +1,7 @@
 package main
 
-import "fmt"
+import "golangkah/filemanipulation"
 
 func main() {
-	fmt.Println("Hello World")
+	filemanipulation.WriteFile("tes.txt")
 }

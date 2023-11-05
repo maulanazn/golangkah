@@ -1,12 +1,13 @@
-go 1.21.2
-
 use (
-	./bestalbum/entity
-	./bestalbum/contract
-	./bestalbum/service
-	./routine
-  ./context
-	./mapping
-	./mapping/memorysimulation
-	./mathoperation
+    ./context
+    ./embedfile
+    ./filemanipulation
+    ./jsonmodule
+    ./mapping
+    ./mapping/memorysimulation
+    ./mathoperation
+    ./routine
+    ./cryptography
 )
+
+go 1.21.3
