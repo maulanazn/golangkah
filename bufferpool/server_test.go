@@ -42,7 +42,6 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func TestRunServer(t *testing.T) {
-
 	flag.Parse()
 	log.SetFlags(0)
 	http.HandleFunc("/echo", handler)

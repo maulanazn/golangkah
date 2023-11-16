@@ -51,8 +51,8 @@ func runNewConnection(wg *sync.WaitGroup) {
 		select {
 		case <-done:
 			return
-    case t := <-ticker.C:
-      text := fmt.Sprintf("Hello world in %d", t.Second())
+		case t := <-ticker.C:
+			text := fmt.Sprintf("Hello world in %d", t.Second())
 			err := conn.WriteMessage(websocket.TextMessage, []byte(text))
 			if err != nil {
 				log.Println("Write error : ", err)

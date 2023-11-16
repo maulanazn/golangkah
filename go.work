@@ -5,6 +5,9 @@ use (
 	./embedfile
 	./filemanipulation
 	./jsonmodule
+	./pattern
+	./pattern/builder
+	./logging
 	./mapping
 	./mapping/memorysimulation
 	./mathoperation

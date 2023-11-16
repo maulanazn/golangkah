@@ -1,0 +1,6 @@
+time="2023-11-16T17:30:49+07:00" level=info msg="Tes info"
+time="2023-11-16T17:30:49+07:00" level=error msg="Tes error"
+time="2023-11-16T17:30:49+07:00" level=warning msg="Tes warn"
+time="2023-11-16T17:34:59+07:00" level=info msg="Tes info"
+time="2023-11-16T17:34:59+07:00" level=error msg="Tes error"
+time="2023-11-16T17:34:59+07:00" level=warning msg="Tes warn"

@@ -1,0 +1,4 @@
+time="2023-11-16T14:49:27+07:00" level=trace msg=IDK
+time="2023-11-16T15:14:48+07:00" level=info msg=IDK username=maulanazn
+time="2023-11-16T15:15:53+07:00" level=info msg=IDK action=login username=maulanazn
+{"action":"product","level":"info","msg":"","time":"2023-11-16T15:26:16+07:00","username":"maulanazn"}
