@@ -42,3 +42,6 @@ Go-Lang(kah) is a history tracking that documented every part of golang feature,
 
 - routine
 >> Go-Routine in Go-Lang presentation
+
+- validation
+>> Go-Lang validation presentation with go-playground/validator/v10

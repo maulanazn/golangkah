@@ -13,6 +13,7 @@ use (
 	./mapping/memorysimulation
 	./mathoperation
 	./routine
+	./validation
 )
 
 go 1.21.4
