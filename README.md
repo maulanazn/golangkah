@@ -45,3 +45,6 @@ Go-Lang(kah) is a history tracking that documented every part of golang feature,
 
 - validation
 >> Go-Lang validation presentation with go-playground/validator/v10
+
+- viper-go
+>> Go-Lang Viper configuration management with spf13/viper
